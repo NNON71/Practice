@@ -1,47 +1,41 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int main() {
-    int n, m;
-    cin >> n >> m;
-    char x;
-    vector<vector<char>> board(n, vector<char>(m));
-    vector<vector<bool>> check(n, vector<bool>(m, false));
+int main(){
+    int rows, cols;
+    cin >> rows >> cols;
+    vector<vector<char>> matrix(rows, vector<char>(cols));
 
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cin >> x;
-            if (x == 'O')
-                check[i][j] = true;
-            board[i][j] = x;
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < cols; j++){
+            cin >> matrix[i][j];
         }
     }
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            if(check[i][j]){
-                
+
+    for(int i = 0; i < cols; i++){
+        int x;
+        cin >> x;
+
+        int startRow = rows - 1;
+        for(int j = 0; j < rows; j++){
+            if(matrix[j][i] == 'O'){
+                startRow = j - 1;
+                break;
             }
         }
+
+        for(int k = 0; k < x && startRow - k >= 0; k++){
+            matrix[startRow - k][i] = '#';
+        }
     }
 
-    cout << endl;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cout << check[i][j];
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < cols; j++){
+            cout << matrix[i][j];
         }
         cout << endl;
     }
+    return 0;
 }
 
-/*
-8 5
-.....
-.....
-.OO..
-.....
-.O...
-...O.
-.....
-.....
-1 1 3 2 0
-*/
+// toi1_

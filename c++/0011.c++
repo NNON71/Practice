@@ -2,38 +2,16 @@
 using namespace std;
 
 int main(){
-    string s;
-    cin>>s;
-    cout<<'.';
-    for(int i=0;i<s.length();i++){
-        if(i%3==2) cout<<".*..";
-        else cout<<".#..";
+    int num[42] = {},x,r=0;
+    for(int i=0;i<10;i++){
+        cin>>x;
+        num[x%42] = 1;
     }
-    cout<<endl;
-    cout<<'.';
-    for(int i=0;i<s.length();i++){
-        if(i%3==2) cout<<"*.*.";
-        else cout<<"#.#.";
+    for(int i=0;i<42;i++){
+        if(num[i]==1){
+            r++;
+        }
     }
-    cout<<endl;
-    cout<<'#';
-    for(int i=0;i<s.length();i++){
-        if(i%3==2 or (i%3==1 && i!=s.length()-1)) cout<<"."<<s[i]<<".*";
-        else cout<<"."<<s[i]<<".#";
-    }
-    cout<<endl;
-    cout<<'.';
-    for(int i=0;i<s.length();i++){
-        if(i%3==2) cout<<"*.*.";
-        else cout<<"#.#.";
-    }
-    cout<<endl;
-    cout<<'.';
-    for(int i=0;i<s.length();i++){
-        if(i%3==2) cout<<".*..";
-        else cout<<".#..";
-    }
-    cout<<endl;
-
+    cout<<r;
     return 0;
 }
