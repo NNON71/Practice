@@ -12,5 +12,21 @@ int main(){
             window[x + j]++;
         }
     }
-    
+
+    int p1 = 0, p2 = 0;
+    for(int i = 0; i < W; i++){
+        if(window[i] == 1) p1++;
+        else if(window[i] == 0) p2++;
+    }
+    cout << H *p2 << " " << H * p1;
 }
+
+
+/*
+7 3 3
+1 2
+5 3
+2 2
+
+6 12
+*/
